@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(outdir)*.exe $(projectdir)$(SolutionName)Builds\ /i /y&#xD;&#xA;xcopy $(outdir)*.dll $(projectdir)$(SolutionName)Builds\ /i /y&#xD;&#xA;xcopy $(outdir)*.json $(projectdir)$(SolutionName)Builds\ /i /y" />
+  </Target>
+
+</Project>
